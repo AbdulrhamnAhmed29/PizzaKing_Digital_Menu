@@ -1,13 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { HiCheck, HiOutlineSparkles } from 'react-icons/hi';
-
-const DigitalMenu = () => {
-    const [selectedSize, setSelectedSize] = useState({});
-    const [selectedOffers, setSelectedOffers] = useState({});
-    // حالة الكاتيجوري المختارة
-    const [activeTab, setActiveTab] = useState("الكل");
-
-    const menuItems = [
+   const menuItems = [
         {
             id: 1,
             category: "باستا",
@@ -63,17 +56,23 @@ const DigitalMenu = () => {
             }
         }
     ];
+const DigitalMenu = () => {
+    const [selectedSize, setSelectedSize] = useState({});
+    const [selectedOffers, setSelectedOffers] = useState({});
+    // حالة الكاتيجوري المختارة
+    const [activeTab, setActiveTab] = useState("الكل");
+
+ 
 
     // استخراج الكاتيجوريز بدون تكرار
     const categories = ["الكل", ...new Set(menuItems.map(item => item.category))];
 
-    // فلترة المنتجات بناءً على التاب النشط
+// فلترة المنتجات بناءً على التاب النشط
     const filteredItems = useMemo(() => {
         return activeTab === "الكل"
             ? menuItems
             : menuItems.filter(item => item.category === activeTab);
-    }, [activeTab]);
-
+    }, [activeTab, menuItems]); // شيلنا category وضفنا menuItems
     const handleSelectOffer = (productId, offerId) => {
         setSelectedOffers(prev => ({ ...prev, [productId]: offerId }));
     };
