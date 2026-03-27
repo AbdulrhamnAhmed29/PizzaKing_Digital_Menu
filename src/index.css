@@ -1,13 +1,37 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* تحسين السكرول بار الأساسي للمتصفح */
+::-webkit-scrollbar {
+  width: 1px; /* عرض السكرول الرأسي */
+  height: 2px; /* ارتفاع السكرول الأفقي (للـ Tabs) */
+  margin-top: 4px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* الخلفية (المسار) */
+::-webkit-scrollbar-track {
+  background: #0a0a0a; 
+}
+
+body {
+  background: #0a0a0a;
+}
+
+/* الجزء المتحرك (المقبض) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #f3b732, #fb923c); /* تدرج ذهبي برتقالي */
+  border-radius: 20px;
+  border: 2px solid #0a0a0a; /* بيعمل فراغ بسيط عشان يبان شيك */
+}
+
+/* عند تمرير الماوس فوق السكرول */
+::-webkit-scrollbar-thumb:hover {
+  background: #f3b732; 
+}
+
+/* للهواتف والمتصفحات التي تدعم خاصية scrollbar-gutter */
+html {
+  scrollbar-color: #f3b732 #0a0a0a;
+  scrollbar-width: thin;
 }
