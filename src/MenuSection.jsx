@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HiOutlineTag, HiCheck, HiOutlineSparkles } from 'react-icons/hi';
+import {  HiCheck, HiOutlineSparkles } from 'react-icons/hi';
 
 const DigitalMenu = () => {
     const [selectedSize, setSelectedSize] = useState({});
