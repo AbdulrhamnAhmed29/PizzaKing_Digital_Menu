@@ -1,43 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <link rel="icon" href="./image/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="theme-color" content="#000000" /> <title>بيتزا كينج | منيو الملوك وأقوى عروض البيتزا في مصر 2026</title>
+    <meta name="description" content="اكتشف طعم الملوك مع منيو بيتزا كينج الجديد. عروض حصرية، كومبو ملكي، وتوصيل سريع. تصفح المنيو الآن واطلب البيتزا المفضلة لديك بأفضل سعر في مصر." />
+    <meta name="keywords" content="بيتزا كينج, Pizza King Egypt, منيو بيتزا كينج, عروض بيتزا 2026, اطلب بيتزا اونلاين, مطاعم بيتزا في القاهرة" />
+    <meta name="author" content="Abdulrhman Ahmed" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pizzaking.com.eg/" />
+    <meta property="og:title" content="Pizza King Menu - تجربة ملكية لا تُنسى" />
+    <meta property="og:description" content="أقوى عروض الكومبو والبيتزا الأصلية. تصفح المنيو المحدث الآن." />
+    <meta property="og:image" content="./image/logo.png" />
+
+    <link rel="apple-touch-icon" href="./image/logo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --pure-black: #000000; /* اللون الأسود الصريح */
+        --royal-gold: #f59e0b;
+        --glass-bg: rgba(0, 0, 0, 0.8);
+      }
+
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--pure-black); /* تعديل هنا */
+        font-family: 'Cairo', 'Inter', sans-serif;
+        color: white;
+        overflow-x: hidden;
+      }
+
+      /* Custom Scrollbar الفخم باللون الأسود */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--pure-black);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, transparent, var(--royal-gold), transparent);
+        border-radius: 10px;
+      }
+
+      /* شاشة تحميل سوداء بالكامل */
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: var(--pure-black); /* تعديل هنا */
+        z-index: 9999;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .loader-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .loader-ring {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 2px solid rgba(245, 158, 11, 0.05);
+        border-top: 2px solid var(--royal-gold);
+        animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+      }
+
+      .loader-logo {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 1); /* ظل أسود عميق للوجو */
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        margin-top: 25px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        color: var(--royal-gold);
+        font-weight: 900;
+        opacity: 0.8;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>يجب عليك تفعيل JavaScript لتصفح منيو بيتزا كينج.</noscript>
+
+    <div id="loading-screen">
+      <div class="loader-container">
+        <div class="loader-ring"></div>
+        <img src="./image/logo.png" alt="Pizza King" class="loader-logo" />
+      </div>
+      <div class="loading-text">Welcome To Pizza King...</div>
+    </div>
+
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script>
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('loading-screen');
+        if (loader) {
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            setTimeout(() => loader.remove(), 800);
+          }, 1000);
+        }
+      });
+    </script>
   </body>
 </html>

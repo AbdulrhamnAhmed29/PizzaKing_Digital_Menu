@@ -1,17 +1,16 @@
-import React from 'react'
-import MenuSection from './MenuSection'
-import Navbar from './navbar'
 
-function App() {
-  return (
-    <div>
-      <Navbar />
-      <main className='pt-10'>
-        <MenuSection />
-      </main>
 
-    </div>
-  )
-}
+import React from 'react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import queryClient from './api/config/queryClient';
+import  Home  from './pages/Home';
 
-export default App
+const App = () => {
+    return (
+        <QueryClientProvider client={queryClient}>
+            <Home />
+        </QueryClientProvider>
+    );
+};
+
+export default App;

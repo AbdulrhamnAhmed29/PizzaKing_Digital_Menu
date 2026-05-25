@@ -2,36 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* تحسين السكرول بار الأساسي للمتصفح */
 ::-webkit-scrollbar {
-  width: 1px; /* عرض السكرول الرأسي */
-  height: 2px; /* ارتفاع السكرول الأفقي (للـ Tabs) */
+  width: 1px;
+  height: 2px;
   margin-top: 4px;
 }
 
-/* الخلفية (المسار) */
 ::-webkit-scrollbar-track {
-  background: #0a0a0a; 
-}
-
-body {
   background: #0a0a0a;
 }
 
-/* الجزء المتحرك (المقبض) */
+
+.gradient {
+  background: linear-gradient(135deg, #000000, #4d42243b, #000000, #000000);
+
+}
+
+.menusection {
+  background: linear-gradient(135deg, #000000, #171c24, #000000, #000000)
+}
+
+.header {
+  background-attachment: fixed;
+}
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f3b732, #fb923c); /* تدرج ذهبي برتقالي */
+  background: linear-gradient(to bottom, #c2b79f, #d4c9c0);
   border-radius: 20px;
-  border: 2px solid #0a0a0a; /* بيعمل فراغ بسيط عشان يبان شيك */
+  border: 2px solid #0a0a0a;
 }
 
-/* عند تمرير الماوس فوق السكرول */
 ::-webkit-scrollbar-thumb:hover {
-  background: #f3b732; 
+  background: #c5bdac;
 }
 
-/* للهواتف والمتصفحات التي تدعم خاصية scrollbar-gutter */
 html {
-  scrollbar-color: #f3b732 #0a0a0a;
+  scrollbar-color: #b1a999 #0a0a0a;
   scrollbar-width: thin;
 }
