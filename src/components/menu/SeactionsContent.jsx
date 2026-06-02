@@ -58,16 +58,35 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
             viewport={{ once: true, margin: "-100px" }}
             className="gradient w-full backdrop-blur-lg rounded-[2.5rem] shadow-2xl overflow-hidden mb-8 border border-white/[0.03]"
         >
+            <div className="flex flex-col items-center justify-center px-6 pt-8  text-center select-none">
+                <span className="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-amber-500 mb-2 relative before:content-[''] before:absolute before:left-[-30px] before:top-1/2 before:w-5 before:h-[1px] before:bg-amber-500/50 after:content-[''] after:absolute after:right-[-30px] after:top-1/2 after:w-5 after:h-[1px] after:bg-amber-500/50">
+                    PREMIUM SELECTION
+                </span>
+
+                <h2 className="text-3xl md:text-4xl font-extrabold text-stone-100 tracking-wide uppercase italic">
+                    {section.Name}
+                </h2>
+
+                <div className="flex items-center justify-center gap-4 mt-4 w-full max-w-[250px]">
+                    <div className="h-[2px] w-full bg-gradient-to-r from-transparent to-amber-500" />
+                    <div className="flex gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]" />
+                        <span className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]" />
+                    </div>
+                    <div className="h-[2px] w-full bg-gradient-to-l from-transparent to-amber-500" />
+                </div>
+            </div>
             {/* 2. Products Details */}
             <motion.div
                 variants={containerVariants}
-                className="grid grid-cols-1 pt-16 lg:grid-cols-2 gap-4 p-4"
+                className="grid grid-cols-1 pt-7 lg:grid-cols-2 gap-4 p-4"
             >
                 {section.products?.map((product) => (
                     <motion.div
                         key={product.id}
                         variants={itemVariants}
                         className="flex items-center justify-between gap-4 p-3 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
+
                     >
                         <div className="flex-1">
                             <h3 className="text-lg font-bold text-stone-100 group-hover:text-amber-400 transition-colors duration-300">
@@ -174,9 +193,9 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                         );
                                     })}
 
-                          
 
-                                
+
+
                                 {section.priceOfCompo?.map((comboOffer, index) => (
                                     <motion.div
                                         key={`combo-${comboOffer.id}`}
