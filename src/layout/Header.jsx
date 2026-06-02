@@ -9,11 +9,9 @@ import { APP_NAME, APP_TAGLINE } from '../config/constants';
 
 const Header = () => {
     return (
-        <header className="w-full   z-50 py-4 text-center header overflow-hidden">
+        <header className="w-full  z-50 py-4 text-center header overflow-hidden">
             <div className="relative  max-w-7xl mx-auto px-4">
-
                 <div className="flex flex-col items-center justify-center text-center">
-
                     <h1 className="relative  text-4xl md:text-6xl  font-black tracking-tight uppercase select-none flex items-center justify-center gap-4 md:gap-6 flex-wrap leading-none">
                         <motion.div
                             initial={{ left: '-100%' }}
@@ -34,6 +32,7 @@ const Header = () => {
                                     {APP_NAME.split(' ').slice(1).join(' ')}
                                 </span>
                                 <div className="relative inline-flex items-center justify-center group mx-1">
+                                    {/* التوهج الخلفي المستمر */}
                                     <motion.div
                                         animate={{
                                             opacity: [0.15, 0.35, 0.15],

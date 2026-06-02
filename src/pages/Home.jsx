@@ -20,7 +20,6 @@ const ShowProductsContainer = () => {
     const { Sections, isLoading, isError, error } = useMenuSections();
     // State management for selected category with session storage persistence
     const [selectedCategory, setSelectedCategory] = useState(CATEGORIES.BEST_SELLER);
-
     return (
         <div dir="rtl" className="min-h-screen bg-[#050501]  px-5 font-['Cairo'] text-white selection:bg-amber-500/30">
             <div className="max-w-[800px] md:max-w-[800px] mx-auto space-y-2">
