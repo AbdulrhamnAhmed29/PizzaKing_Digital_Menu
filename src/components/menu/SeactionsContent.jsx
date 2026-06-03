@@ -48,7 +48,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
         }
         return Number(price) || 0;
     };
-
+    console.log(section)
 
     return (
         <motion.div
@@ -141,7 +141,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
 
             {/* 3- Offer Btn */}
             <div className="px-6 pb-6 pt-4">
-                {section.price_offers?.length > 0 && (
+                {section.offers_prices?.length > 0 && (
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-amber-600/10 to-amber-500/5 border border-amber-500/20 flex items-center justify-center gap-3 group active:scale-[0.99] hover:border-amber-500/40 hover:from-amber-600/15 transition-all duration-300"
@@ -164,9 +164,8 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                         >
                             <div className="grid grid-cols-1 gap-4 pt-6 pb-2">
                                 <p className="text-center text-[15px] p-1 text-gray-200 ">هذه الاسعار تنطبق على البيتزات المتاحة فى السيكشن</p>
-                                {/* العروض العادية */}
-                                {section.price_offers
-                                    ?.sort((a, b) => (a.offers?.[0]?.offer_type === "medium" ? -1 : 1))
+                                {section.offers_prices
+                                    ?.sort((a, b) => (a.offer?.[0]?.offer_type === "medium" ? -1 : 1))
                                     ?.map((offer) => {
                                         return (
                                             <motion.div
@@ -176,27 +175,21 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                                 className="relative flex justify-between items-center p-4 rounded-2xl bg-white/[0.01] border border-white/[0.03] border-r-4 border-r-amber-500 shadow-inner overflow-hidden hover:bg-white/[0.03] transition-all duration-300"
                                             >
                                                 <span className="absolute top-0 right-0 bg-amber-500 text-black text-[9px] font-black应用 px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                                                    {offer.offers?.[0]?.offer_type === "medium" ? "وسط" : "كبير"}
+                                                    {offer.offer?.offer_type === "medium" ? "وسط" : "كبير"}
                                                 </span>
-
                                                 <div className="space-y-1 pt-2">
                                                     <h4 className="text-white font-bold text-sm">
-                                                        عرض الـ {offer.offers?.[0]?.quantity} قطع {offer.offers?.[0]?.offer_type === "medium" ? "Medium" : "Large"}
+                                                        عرض الـ {offer.offer?.quantity} قطع {offer.offer?.offer_type === "medium" ? "Medium" : "Large"}
                                                     </h4>
-
                                                 </div>
                                                 <div className="text-right">
-                                                    <span className="block text-white font-black text-2xl tracking-tighter">{getUpdatedPrice(offer.Price)}</span>
+                                                    <span className="block text-white font-black text-2xl tracking-tighter">{getUpdatedPrice(offer.price)}</span>
                                                     <span className="text-stone-500 text-[9px] font-bold uppercase">جنيه</span>
                                                 </div>
                                             </motion.div>
                                         );
                                     })}
-
-
-
-
-                                {section.priceOfCompo?.map((comboOffer, index) => (
+                                {section.compo_offers_prices?.map((comboOffer, index) => (
                                     <motion.div
                                         key={`combo-${comboOffer.id}`}
                                         initial={{ opacity: 0, y: 25 }}
@@ -223,10 +216,10 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                                         <HiSparkles className="text-amber-500 animate-pulse" size={12} />
                                                     </div>
                                                     <h4 className="text-xl font-black bg-gradient-to-r from-white via-stone-200 to-stone-400 bg-clip-text text-transparent">
-                                                        {comboOffer.compo_offers?.[0]?.description}
+                                                        {comboOffer.compo_offer?.description}
                                                     </h4>
                                                     <p className="text-stone-400 text-xs font-medium max-w-[220px] leading-relaxed">
-                                                        {comboOffer.compo_offers?.[0]?.title || "تجربة ملكية فريدة من نوعها لأصحاب الذوق الرفيع"}
+                                                        {comboOffer.compo_offer?.title || "تجربة ملكية فريدة من نوعها لأصحاب الذوق الرفيع"}
                                                     </p>
                                                 </div>
                                             </div>
