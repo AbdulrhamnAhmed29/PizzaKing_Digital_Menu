@@ -8,5 +8,5 @@ import { getRequest } from '../../../api/baseApi';
  * @returns {Promise} - Products data
  */
 export const fetchSections =  () => {  
-    return getRequest('menu-sections?populate[category][populate]=*&populate[products][populate][prices][populate][products_size]=*&populate[products][populate][Image]=true&populate[price_offers][populate][offers]=*&populate[priceOfCompo][populate][compo_offers]=*');
+    return getRequest('menu-sections?populate[category][populate]=*&populate[products][populate][prices][populate][products_size]=*&populate[products][populate][Image]=true&populate[offers_prices][populate][offer][populate]=false&populate[compo_offers_prices][populate][compo_offer][populate]=false');
 };
