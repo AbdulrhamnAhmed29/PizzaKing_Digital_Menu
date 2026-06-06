@@ -3,11 +3,13 @@
  * @param {Array<{percentage: number, isActive: boolean}>} updates 
  * @returns {number}
  */
+
+// if func not array return 1 
 export const calculateTotalMultiplier = (updates) => {
     if (!Array.isArray(updates)) {
         return 1;
     }
-
+    // get sum factor of all active updates 
     return updates
         .filter((update) => update)
         .reduce((accumulator, update) => {
@@ -17,7 +19,6 @@ export const calculateTotalMultiplier = (updates) => {
             return Multiplier;
         }, 1);
 };
-
 /**
  *
  * @param {number} basePrice 
@@ -26,6 +27,6 @@ export const calculateTotalMultiplier = (updates) => {
  */
 export const formatFinalPrice = (basePrice, multiplier) => {
     const price = Number(basePrice) * Number(multiplier);
-    
+
     return Math.round(price || 0);
 };
