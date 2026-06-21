@@ -85,7 +85,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                     <motion.div
                         key={product.id}
                         variants={itemVariants}
-                        className="flex items-center justify-between gap-1 p-3 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
+                        className="flex items-center justify-between gap-1 p-2 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
                     >
                         {/* 1. Product Info Wrapper */}
                         <div className="flex-1">
