@@ -98,7 +98,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                             </p>
 
                             {/* Sizes & Prices Badges */}
-                            <div className="flex items-center mt-4 gap-2">
+                            <div className="flex items-center mt-4 gap-1">
                                 {product.prices
                                     ?.sort((a, b) => {
                                         const order = { small: 1, medium: 2, large: 3 };
@@ -142,7 +142,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                     </span>
                                 )}
 
-                                <div className="relative w-24 h-24 rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
+                                <div className="relative w-[70px] h-[70px] rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
                                     <motion.img
                                         loading="lazy"
                                         src={`${STRAPI_URL}${product.Image.formats?.small?.url || product.Image.formats?.thumbnail?.url || product.Image.url}`}
