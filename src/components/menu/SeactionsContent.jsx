@@ -41,13 +41,15 @@ const priceBadgeVariants = {
 
 const MenuItem = ({ section, multiplier, getFinalPrice }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const STRAPI_URL = process.env.REACT_APP_STRAPI_URL || "http://localhost:1337";
+    
     const getUpdatedPrice = (price) => {
         if (typeof getFinalPrice === 'function') {
             return getFinalPrice(price);
         }
         return Number(price) || 0;
     };
+    console.log(section);
+    
     return (
         <motion.div
             variants={cardVariants}
@@ -145,7 +147,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                 <div className="relative w-[70px] h-[70px] rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
                                     <motion.img
                                         loading="lazy"
-                                        src={`${STRAPI_URL}${product.Image.formats?.small?.url || product.Image.formats?.thumbnail?.url || product.Image.url}`}
+                                        src={`${product.Image.formats?.small?.url || product.Image.formats?.thumbnail?.url || product.Image.url}`}
                                         alt={product.Title}
                                         whileHover={{ scale: 1.08 }}
                                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
