@@ -41,7 +41,7 @@ const priceBadgeVariants = {
 
 const MenuItem = ({ section, multiplier, getFinalPrice }) => {
     const [isOpen, setIsOpen] = useState(false);
-    
+
     const getUpdatedPrice = (price) => {
         if (typeof getFinalPrice === 'function') {
             return getFinalPrice(price);
@@ -49,7 +49,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
         return Number(price) || 0;
     };
     console.log(section);
-    
+
     return (
         <motion.div
             variants={cardVariants}
@@ -65,9 +65,9 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                 {/* Header */}
                 <div className="text-right border-b border-white/5 pb-4">
                     <h1 className="text-4xl italic font-black bg-gradient-to-l from-stone-100 via-amber-200 to-amber-500 bg-clip-text text-transparent">
-                       {section.Name}
+                        {section.Name}
                     </h1>
-                
+
                 </div>
                 <div className="flex items-center justify-center gap-4 mt-4 w-full max-w-[250px]">
                     <div className="h-[2px] w-full bg-gradient-to-r from-transparent to-amber-500" />
@@ -144,7 +144,8 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                     </span>
                                 )}
 
-                                <div className="relative w-[70px] h-[70px] rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
+                                {/* التعديل هنا: أضفنا flex-shrink-0 و aspect-square لضمان الدائرية الثابتة */}
+                                <div className="relative w-[70px] h-[70px] flex-shrink-0 aspect-square rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
                                     <motion.img
                                         loading="lazy"
                                         src={`${product.Image.formats?.small?.url || product.Image.formats?.thumbnail?.url || product.Image.url}`}
