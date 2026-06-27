@@ -48,7 +48,6 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
         }
         return Number(price) || 0;
     };
-    console.log(section);
 
     return (
         <motion.div
@@ -87,79 +86,107 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                     <motion.div
                         key={product.id}
                         variants={itemVariants}
-                        className="flex items-center justify-between gap-1 p-2 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
+                        className="flex items-center gap-2 p-2 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
                     >
-                        {/* 1. Product Info Wrapper */}
-                        <div className="flex-1">
-                            <h3 className="text-lg font-bold text-stone-100 group-hover:text-amber-400 transition-colors duration-300">
+                        {/* Product Info */}
+                        <div className="flex-1 min-w-0">
+                            <h3 className="text-lg font-bold text-stone-100 group-hover:text-amber-400 transition-colors duration-300 truncate">
                                 {product.Title}
                             </h3>
 
-                            <p className="text-stone-500 text-xs md:w-52 line-clamp-1 mt-1">
+                            <p className="text-stone-500 text-xs line-clamp-1 mt-1">
                                 {product.Description}
                             </p>
 
-                            {/* Sizes & Prices Badges */}
-                            <div className="flex items-center mt-4 gap-1">
+                            {/* Sizes & Prices */}
+                            <div className="flex flex-wrap items-center mt-3 gap-1">
                                 {product.prices
                                     ?.sort((a, b) => {
                                         const order = { small: 1, medium: 2, large: 3 };
-                                        return order[a.products_size?.size] - order[b.products_size?.size];
+                                        return (
+                                            order[a.products_size?.size] -
+                                            order[b.products_size?.size]
+                                        );
                                     })
                                     ?.map((priceItem, idx) => (
                                         <motion.div
                                             key={idx}
                                             variants={priceBadgeVariants}
                                             whileHover="hover"
-                                            className="flex items-center gap-1.5 bg-white/[0.02] border border-white/[0.05] px-2.5 py-1 rounded-xl cursor-pointer transition-all"
+                                            className="flex items-center gap-1.5 bg-white/[0.02] border border-white/[0.05] px-2 py-1 rounded-xl"
                                         >
-                                            <span className="text-[10px] font-black text-amber-500/60 group-hover:text-amber-500 uppercase">
-                                                {priceItem.products_size?.size === 'small' ? 'S' :
-                                                    priceItem.products_size?.size === 'medium' ? 'M' : 'L'}
+                                            <span className="text-[8px] font-black text-amber-500/60 uppercase">
+                                                {priceItem.products_size?.size === "small"
+                                                    ? "S"
+                                                    : priceItem.products_size?.size === "medium"
+                                                        ? "M"
+                                                        : "L"}
                                             </span>
 
-                                            <div className="w-[1px] h-2.5 bg-white/10"></div>
+                                            <div className="w-px h-2.5 bg-white/10"></div>
 
                                             <span className="text-white font-bold text-[12px]">
                                                 {getUpdatedPrice(priceItem.price)}
-                                                <small className="text-[8px] ms-0.5 text-stone-500">ج.م</small>
+                                                <small className="text-[8px] ms-0.5 text-stone-500">
+                                                    ج.م
+                                                </small>
                                             </span>
                                         </motion.div>
                                     ))}
                             </div>
                         </div>
 
-                        {/* 2. Product Image Wrapper */}
-                        {product.Image ? (
+                        {/* Product Image */}
+                        {product.Image && (
                             <div className="relative flex-shrink-0">
 
                                 {product.is_spicy && (
-                                    <span className="absolute left-4 top-0 z-30 flex items-center gap-1 bg-gradient-to-r from-red-950/90 to-stone-950/90 backdrop-blur-md border border-red-500/30 text-red-400 text-[9px] font-black tracking-[0.2em] uppercase pl-2 pr-1.5 py-0.5 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.3)] select-none group-hover:border-red-500/60 group-hover:text-red-300 transition-all duration-300 whitespace-nowrap">
+                                    <span className="absolute left-1 top-0 z-30 flex items-center gap-1 bg-gradient-to-r from-red-950/90 to-stone-950/90 backdrop-blur-md border border-red-500/30 text-red-400 text-[8px] font-black tracking-[0.15em] uppercase px-2 py-0.5 rounded-full whitespace-nowrap">
                                         Spicy
-                                        {/* Glowing Fire Pulse */}
                                         <span className="relative flex h-2 w-2">
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
+                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                                         </span>
                                     </span>
                                 )}
 
-                                {/* التعديل هنا: أضفنا flex-shrink-0 و aspect-square لضمان الدائرية الثابتة */}
-                                <div className="relative w-[70px] h-[70px] flex-shrink-0 aspect-square rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
+                                <div
+                                    className="
+                    relative
+                    w-14 h-14
+                    sm:w-16 sm:h-16
+                    md:w-20 md:h-20
+                    flex-shrink-0
+                    rounded-full
+                    overflow-hidden
+                    shadow-[0_10px_30px_rgba(0,0,0,0.6)]
+                    bg-stone-900
+                    border border-white/5
+                    group-hover:border-amber-500/30
+                    transition-all duration-500
+                    z-10
+                "
+                                >
                                     <motion.img
                                         loading="lazy"
-                                        src={`${product.Image.formats?.small?.url || product.Image.formats?.thumbnail?.url || product.Image.url}`}
+                                        src={
+                                            product.Image.formats?.small?.url ||
+                                            product.Image.formats?.thumbnail?.url ||
+                                            product.Image.url
+                                        }
                                         alt={product.Title}
                                         whileHover={{ scale: 1.08 }}
-                                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                        className="w-full h-full object-cover"
+                                        transition={{
+                                            duration: 0.6,
+                                            ease: [0.16, 1, 0.3, 1],
+                                        }}
+                                        className="absolute inset-0 w-full h-full object-cover"
                                     />
-                                    {/* Dark Overlay inside the circle */}
+
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60 z-10"></div>
                                 </div>
                             </div>
-                        ) : null}
-
+                        )}
                     </motion.div>
                 ))}
             </motion.div>

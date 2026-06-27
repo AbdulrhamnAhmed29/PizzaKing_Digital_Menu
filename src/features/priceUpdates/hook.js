@@ -10,7 +10,6 @@ export const usePriceUpdates = () => {
     const rawUpdates = price_update.data ?? [];
     const updates =rawUpdates.map((item) => item?.percentage)     
     const multiplier = calculateTotalMultiplier(updates);
-    console.log("multiplier", multiplier ,);
     return {
         newPrice: price_update.data,
         multiplier,
