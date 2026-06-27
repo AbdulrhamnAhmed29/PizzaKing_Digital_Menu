@@ -48,7 +48,6 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
         }
         return Number(price) || 0;
     };
-    console.log(section);
 
     return (
         <motion.div
@@ -87,15 +86,15 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                     <motion.div
                         key={product.id}
                         variants={itemVariants}
-                        className="flex items-center justify-between gap-1 p-2 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
+                        className="flex items-center justify-center gap-1 p-2 rounded-2xl hover:bg-white/[0.03] transition-all duration-300 group"
                     >
                         {/* 1. Product Info Wrapper */}
                         <div className="flex-1">
-                            <h3 className="text-lg font-bold text-stone-100 group-hover:text-amber-400 transition-colors duration-300">
+                            <h3 className="text-1xl font-bold min-w-0 text-stone-100 group-hover:text-amber-400 transition-colors duration-300">
                                 {product.Title}
                             </h3>
 
-                            <p className="text-stone-500 text-xs md:w-52 line-clamp-1 mt-1">
+                            <p className="text-stone-500 min-w-0 text-xs md:w-52 line-clamp-1 mt-1">
                                 {product.Description}
                             </p>
 
@@ -113,7 +112,7 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                             whileHover="hover"
                                             className="flex items-center gap-1.5 bg-white/[0.02] border border-white/[0.05] px-2.5 py-1 rounded-xl cursor-pointer transition-all"
                                         >
-                                            <span className="text-[10px] font-black text-amber-500/60 group-hover:text-amber-500 uppercase">
+                                            <span className="text-[8px] font-black text-amber-500/60 group-hover:text-amber-500 uppercase">
                                                 {priceItem.products_size?.size === 'small' ? 'S' :
                                                     priceItem.products_size?.size === 'medium' ? 'M' : 'L'}
                                             </span>
@@ -144,15 +143,14 @@ const MenuItem = ({ section, multiplier, getFinalPrice }) => {
                                     </span>
                                 )}
 
-                                {/* التعديل هنا: أضفنا flex-shrink-0 و aspect-square لضمان الدائرية الثابتة */}
-                                <div className="relative w-[70px] h-[70px] flex-shrink-0 aspect-square rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
+                                <div className="relative  w-16   flex-shrink-0 aspect-square rounded-full overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.6)] bg-stone-900 border border-white/5 group-hover:border-amber-500/30 transition-all duration-500 z-10">
                                     <motion.img
                                         loading="lazy"
                                         src={`${product.Image.formats?.small?.url || product.Image.formats?.thumbnail?.url || product.Image.url}`}
                                         alt={product.Title}
                                         whileHover={{ scale: 1.08 }}
                                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                        className="w-full h-full object-cover"
+                                        className="absolute inset-0 w-full h-full object-cover"
                                     />
                                     {/* Dark Overlay inside the circle */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60 z-10"></div>
